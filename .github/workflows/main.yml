@@ -56,19 +56,12 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v4
 
-      
-      - name: Print original application.properties
-        run: cat src/main/resources/application.properties
-
       - name: Update application.properties file
         run: |
-          sed -e "s/^jdbc.username=.*$/jdbc.username=${{ secrets.RDS_USER }}/" \
-              -e "s/^jdbc.password=.*$/jdbc.password=${{ secrets.RDS_PASS }}/" \
-              -e "s/db01/${{ secrets.RDS_ENDPOINT }}/" src/main/resources/application.properties
+          sed -i "s/^jdbc.username=.*$/jdbc.username=${{ secrets.RDS_USER }}/" src/main/resources/application.properties
+          sed -i "s/^jdbc.password=.*$/jdbc.password=${{ secrets.RDS_PASS }}/" src/main/resources/application.properties
+          sed -i "s/db01/${{ secrets.RDS_ENDPOINT }}/" src/main/resources/application.properties
 
-      - name: Print updated application.properties
-        run: cat src/main/resources/application.properties
-    
       - name: Build & Upload image to ECR
         uses: appleboy/docker-ecr-action@master
         with:

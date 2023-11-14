@@ -1,23 +1,16 @@
-# Prerequisites
-#####
-- JDK 11
-- Maven 3
-- MySQL 8 
+# Perform CICD with GitHub Actions
 
-# Technologies 
-- Spring MVC
-- Spring Security
-- Spring Data JPA
-- Maven
-- JSP
-- MySQL
-# Database
-Here,we used Mysql DB 
-MSQL DB Installation Steps for Linux ubuntu 14.04:
-- $ sudo apt-get update
-- $ sudo apt-get install mysql-server
+## Architecture of the Code
+![Architecture](images/architecture.png)
 
-Then look for the file :
-- /src/main/resources/db_backup.sql
-- db_backup.sql file is a mysql dump file.we have to import this dump to mysql db server
-- > mysql -u <user_name> -p accounts < db_backup.sql
+## Flow of Execution
+![Tasks](images/tasks.png)
+
+## Result after performing all the steps required
+
+![app](images/login.png)
+![app-db](images/logged-in.png)
+
+
+
+

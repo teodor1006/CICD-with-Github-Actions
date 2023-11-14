@@ -56,10 +56,18 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v4
 
+      - name: Debug Secrets
+        run: |
+          echo "RDS_USER: ${{ secrets.RDS_USER }}"
+          echo "RDS_PASS: ${{ secrets.RDS_PASS }}"
+          echo "RDS_ENDPOINT: ${{ secrets.RDS_ENDPOINT }}"
+
       - name: Update application.properties file
         run: |
-          sed -i -e "s/^jdbc.username=.*$/jdbc.username=${{ secrets.RDS_USER }}/" -e "s/^jdbc.password=.*$/jdbc.password=${{ secrets.RDS_PASS }}/" -e "s/db01/${{ secrets.RDS_ENDPOINT }}/" src/main/resources/application.properties
-
+          sed -e "s/^jdbc.username.*$/jdbc.username=${{ secrets.RDS_USER }}/" \
+              -e "s/^jdbc.password.*$/jdbc.password=${{ secrets.RDS_PASS }}/" \
+              -e "s/db01/${{ secrets.RDS_ENDPOINT }}/" src/main/resources/application.properties
+              
       - name: Build & Upload image to ECR
         uses: appleboy/docker-ecr-action@master
         with:

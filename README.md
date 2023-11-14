@@ -8,7 +8,7 @@
 
 ## Result after performing all the steps required
 
-![app](images/login.png)
+![app](images/login1.png)
 ![app-db](images/logged-in.png)
 
 

@@ -1,12 +1,13 @@
 # Perform CICD with GitHub Actions
 
-## Architecture of the Code
+This project utilizes GitHub Actions for CI/CD of a three-tier Java web application on Amazon ECS. The workflow incorporates testing with Maven, Checkstyle checks, SonarQube code analysis, and actively monitors the health of the ECS cluster using Amazon CloudWatch. It further automates Docker image builds, publishes to Amazon ECR, and deploys updates to ECS task definitions, ensuring a robust and monitored development and deployment pipeline.
+
 ![Architecture](images/architecture.png)
 
 ## Flow of Execution
 ![Tasks](images/tasks.png)
 
-## CI/CD Workflow
+### CI/CD Workflow
 
 ```sh
 name: Hprofile Actions
@@ -129,7 +130,7 @@ jobs:
           wait-for-service-stability: true 
 ```
 
-## Result after performing all the steps required
+### Deployment Validation
 
 ![app](images/login1.png)
 ![app-db](images/logged-in.png)
